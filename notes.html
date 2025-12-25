@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NOTES — yzo’s corner</title>
+
+<style>
+@font-face {
+  font-family: 'Garet';
+  src: url('../fonts/Garet.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Garet', serif;
+  background: #ffffff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  margin-top: 40px;
+}
+
+h1 {
+  color: #5f7d7d;
+  margin-bottom: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 13px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 14px;
+}
+
+nav a.active {
+  background: #f3c6e8;
+}
+
+/* NOTES WRAPPER — LIMITS SCATTER AREA */
+.notes-wrapper {
+  max-width: 9000px;   /* DITO LANG IİKOT NOTES */
+  margin: 0 auto;
+}
+
+/* NOTES CONTAINER */
+.notes-container {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+  height: 100vh;
+}
+
+/* NOTES */
+.notes-container img {
+  position: absolute;
+  width: 120px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.notes-container img:hover {
+  transform: scale(1.1);
+}
+
+/* MODAL */
+#imageModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#imageModal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 14px;
+}
+
+#imageModal span {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>yzo’s corner</h1>
+  <nav>
+    <a href="home.html">HOME</a>
+    <a href="letters.html">LETTERS</a>
+    <a href="playlist.html">PLAYLIST</a>
+    <a href="eli.html">ELI</a>
+    <a href="/quiz/quiz.html">QUIZ</a>
+    <a href="../funfacts.html">FUN FACTS</a>
+    <a href="notes.html" class="active">NOTES</a>
+    <a href="yzochives.html">YZOCHIVES</a>
+  </nav>
+</header>
+
+<div class="notes-wrapper">
+  <div class="notes-container">
+
+    <!-- NOTES (sample layout, adjust positions freely) -->
+    <img src="notes/notes1.png" style="top: 5%; left: 5%;" onclick="openImage(this.src)">
+    <img src="notes/notes2.png" style="top: 5%; left: 65%;" onclick="openImage(this.src)">
+    <img src="notes/notes3.png" style="top: 5%; left: 45%;" onclick="openImage(this.src)">
+    <img src="notes/notes4.png" style="top: 5%; left: 25%;" onclick="openImage(this.src)">
+    <img src="notes/notes5.png" style="top: 5%; left: 85%;" onclick="openImage(this.src)">
+    <img src="notes/notes6.png" style="top: 30%; left: 35%;" onclick="openImage(this.src)">
+    <img src="notes/notes7.png" style="top: 30%; left: 55%;" onclick="openImage(this.src)">
+    <img src="notes/notes8.png" style="top: 30%; left: 75%;" onclick="openImage(this.src)">
+    <img src="notes/notes9.png" style="top: 55%; left: 10%;" onclick="openImage(this.src)">
+    <img src="notes/notes10.png" style="top: 55%; left: 30%;" onclick="openImage(this.src)">
+    <img src="notes/notes11.png" style="top: 55%; left: 50%;" onclick="openImage(this.src)">
+    <img src="notes/notes12.png" style="top: 55%; left: 70%;" onclick="openImage(this.src)">
+    <img src="notes/notes13.png" style="top: 55%; left: 90%;" onclick="openImage(this.src)">
+    <img src="notes/notes14.png" style="top: 30%; left: 15%;" onclick="openImage(this.src)">
+
+
+    <!-- add notes11–notes13 same style -->
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="imageModal">
+  <span onclick="closeImage()">&times;</span>
+  <img id="imageFrame">
+</div>
+
+<script>
+function openImage(src) {
+  document.getElementById('imageFrame').src = src;
+  document.getElementById('imageModal').style.display = 'flex';
+}
+
+function closeImage() {
+  document.getElementById('imageModal').style.display = 'none';
+  document.getElementById('imageFrame').src = '';
+}
+</script>
+
+</body>
+</html>

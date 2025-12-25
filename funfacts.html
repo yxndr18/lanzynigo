@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FUN FACTS — yzo’s corner</title>
+<style>
+@font-face { font-family: 'Garet'; src: url('../fonts/Garet.ttf') format('truetype'); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Garet', serif;
+  background: #ffffff;
+  text-align: center;
+}
+
+/* HEADER */
+header { margin-top: 40px; }
+h1 { color: #5f7d7d; margin-bottom: 10px; }
+
+nav { display: flex; justify-content: center; gap: 20px; font-size: 13px; }
+nav a { text-decoration: none; color: #000; padding: 4px 10px; border-radius: 14px; }
+nav a.active { background: #f3c6e8; }
+
+/* FUN FACT CONTENT */
+.funfact-container {
+  margin-top: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #000;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.funfact-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#nextBtn {
+  margin-top: 20px;
+  padding: 8px 20px;
+  border-radius: 14px;
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Garet', serif;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>yzo’s corner</h1>
+<nav>
+  <a href="home.html">HOME</a>
+  <a href="letters.html">LETTERS</a>
+  <a href="playlist.html">PLAYLIST</a>
+  <a href="eli.html">ELI</a>
+  <a href="/quiz/quiz.html">QUIZ</a>
+  <a href="funfacts.html" class="active">FUN FACTS</a>
+  <a href="notes.html">NOTES</a>
+  <a href="yzochives.html">YZOCHIVES</a>
+</nav>
+</header>
+
+<div class="funfact-container">
+  <div class="funfact-text" id="funfactText">Fun fact goes here</div>
+  <img id="funfactImg" src="" alt="" style="max-width:100%; border-radius:12px; margin-bottom: 15px;">
+  <button id="nextBtn" onclick="nextFunfact()">Next</button>
+</div>
+
+<script>
+// Funfact data
+const funfacts = [
+  { text: "Fun Fact #1", img: "funfact/funfact1.png" },
+  { text: "Fun Fact #2", img: "funfact/funfact2.png" },
+    { text: "Fun Fact #3", img: "funfact/funfact3.png" },
+  { text: "Fun Fact #4", img: "funfact/funfact4.png" },
+  { text: "Fun Fact #5", img: "funfact/funfact5.png" },
+  { text: "Fun Fact #6", img: "funfact/funfact6.png" },
+  { text: "Fun Fact #7", img: "funfact/funfact7.png" },
+  { text: "Fun Fact #8", img: "funfact/funfact8.png" },
+  { text: "Fun Fact #9", img: "funfact/funfact9.png" },
+  { text: "Fun Fact #10", img: "funfact/funfact10.png" },
+
+  // Add more funfacts here
+];
+
+let current = 0;
+
+function loadFunfact() {
+  const f = funfacts[current];
+  document.getElementById("funfactText").textContent = f.text;
+  document.getElementById("funfactImg").src = f.img;
+}
+
+function nextFunfact() {
+  current++;
+  if(current >= funfacts.length) current = 0; // loop back to first funfact
+  loadFunfact();
+}
+
+// Initial load
+loadFunfact();
+</script>
+
+</body>
+</html>

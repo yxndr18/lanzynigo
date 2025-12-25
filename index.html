@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>yzo’s corner</title>
+  <style>
+    @font-face {
+      font-family: 'Garet';
+      src: url('fonts/Garet.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f3ef;
+      font-family: 'Garet', serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 68.5px;
+      margin-bottom: 50px;
+      color: #5f7d7d; /* gray-cyan */
+    }
+
+    button {
+      padding: 12px 40px;
+      font-size: 28.2px;
+      border: 1px solid #000;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Garet', serif;
+    }
+
+    button:hover {
+      background: #000;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>yzo’s corner</h1>
+    <button onclick="goToLogin()">LOG-IN</button>
+  </div>
+
+  <script>
+    function goToLogin() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

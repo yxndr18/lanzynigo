@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QUIZ — yzo’s corner</title>
+<style>
+@font-face { font-family: 'Garet'; src: url('../fonts/Garet.ttf') format('truetype'); }
+
+body {
+  margin: 0;
+  font-family: 'Garet', serif;
+  background: #fff;
+  text-align: center;
+}
+
+header { margin-top: 40px; }
+h1 { color: #5f7d7d; margin-bottom: 10px; }
+
+nav { display: flex; justify-content: center; gap: 20px; font-size: 13px; }
+nav a { text-decoration: none; color: #000; padding: 4px 10px; border-radius: 14px; }
+nav a.active { background: #f3c6e8; }
+
+.quiz-container {
+  max-width: 600px;
+  margin: 60px auto;
+  border: 1px solid #000;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.options button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 10px;
+  font-family: 'Garet', serif;
+  border-radius: 12px;
+  border: 1px solid #000;
+  background: #fefefe;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.options button:hover {
+  background: #5f7d7d;
+  color: #fff;
+}
+
+#nextBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Garet', serif;
+}
+
+/* REWARD MODAL */
+#rewardModal {
+  display: none;
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#rewardModal img {
+  max-width: 80%;
+  max-height: 80%;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+#rewardModal button {
+  padding: 8px 20px;
+  font-family: 'Garet', serif;
+  border-radius: 12px;
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>yzo’s corner</h1>
+<nav>
+  <a href="../home.html">HOME</a>
+  <a href="../letters.html">LETTERS</a>
+  <a href="../playlist.html">PLAYLIST</a>
+  <a href="../eli.html">ELI</a>
+  <a href="quiz.html" class="active">QUIZ</a>
+  <a href="../funfacts.html">FUN FACTS</a>
+  <a href="../notes.html">NOTES</a>
+  <a href="../yzochives.html">YZOCHIVES</a>
+</nav>
+</header>
+
+<div class="quiz-container">
+  <div class="question" id="question">Question goes here</div>
+  <div class="options" id="options"></div>
+  <button id="nextBtn" onclick="nextQuestion()" style="display:none;">Next</button>
+</div>
+
+<!-- Reward Modal -->
+<div id="rewardModal">
+  <img id="rewardImg" src="" alt="Reward">
+  <button onclick="closeReward()">✕ Close</button>
+</div>
+
+<script>
+// Quiz Data
+const quizData = [
+  // 5 trivia/random questions
+  { question: "Which planet is known as the Red Planet?", answers: ["Mars", "Venus", "Jupiter"], correct: 0, reward: "reward/reward1.jpeg" },
+  { question: "What is the capital of France?", answers: ["Paris", "Rome", "Berlin"], correct: 0, reward: "reward/reward2.jpg" },
+  { question: "How many continents are there?", answers: ["5", "7", "6"], correct: 1, reward: "reward/reward3.jpeg" },
+  { question: "Which animal is known as the King of the Jungle?", answers: ["Lion", "Tiger", "Elephant"], correct: 0, reward: "reward/reward4.jpg" },
+  { question: "What is the chemical symbol for water?", answers: ["O2", "H2O", "CO2"], correct: 1, reward: "reward/reward5.jpeg" },
+
+  // Your 5 personal questions
+  { question: "What's my given name?", answers: ["Daniella Cassandra", "Cassy", "Daniel"], correct: 0, reward: "reward/reward6.jpg" },
+  { question: "When's my birthday?", answers: ["April 18, 2005", "May 1, 2005", "June 2, 2005"], correct: 0, reward: "reward/reward7.jpeg" },
+  { question: "How old was I when I started studying?", answers: ["1", "2", "3"], correct: 1, reward: "reward/reward8.jpg" },
+  { question: "What's my third program choice?", answers: ["BSEd Math", "BSEd Science", "BSEd English"], correct: 0, reward: "reward/reward9.jpg" },
+  { question: "How old is kulit?", answers: ["8", "9", "10"], correct: 1, reward: "reward/reward10.jpg" }
+];
+
+let current = 0;
+
+function loadQuestion() {
+  const q = quizData[current];
+  document.getElementById("question").textContent = q.question;
+
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  q.answers.forEach((ans, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = ans;
+    btn.onclick = () => selectAnswer(i);
+    optionsDiv.appendChild(btn);
+  });
+
+  document.getElementById("nextBtn").style.display = "none";
+}
+
+function selectAnswer(i) {
+  const q = quizData[current];
+  if(i === q.correct){
+    // Show reward
+    document.getElementById("rewardImg").src = q.reward;
+    document.getElementById("rewardModal").style.display = "flex";
+  } else {
+    // Show wrong feedback inside quiz-container
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = `
+      <div style="border:1px solid #000; padding:10px; border-radius:12px; margin:10px 0;">
+        Wrong, try again
+        <button onclick="loadQuestion()">Try Again</button>
+      </div>
+    `;
+  }
+}
+
+function nextQuestion() {
+  current++;
+  if(current < quizData.length){
+    loadQuestion();
+  } else {
+    document.querySelector(".quiz-container").innerHTML = "<h2>End of quiz </h2>";
+  }
+}
+
+function closeReward() {
+  document.getElementById("rewardModal").style.display = "none";
+  document.getElementById("rewardImg").src = "";
+  document.getElementById("nextBtn").style.display = "inline-block";
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>

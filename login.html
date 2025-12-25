@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log-in</title>
+  <style>
+    @font-face {
+      font-family: 'Garet';
+      src: url('fonts/Garet.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f6f3ef;
+      font-family: 'Garet', serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #5f7d7d; /* gray-cyan */
+    }
+
+    label {
+      font-size: 16px;
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    input {
+      padding: 5px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 8px 20px;
+      font-size: 16px;
+      border: 1px solid #000;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Garet', serif;
+    }
+
+    button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>yzo’s corner</h1>
+    <div>
+      <label>USERNAME:</label>
+      <input type="text" id="username"><br>
+      <label>PASSWORD:</label>
+      <input type="password" id="password"><br>
+      <button onclick="login()">LOG - IN</button>
+      <div class="error" id="errorMsg"></div>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+
+      // Example credentials
+      if(username === "yzo" && password === "lanzynigo123") {
+        window.location.href = "menu.html"; // redirect pag tama
+      } else {
+        errorMsg.textContent = "Invalid username or password!";
+      }
+    }
+  </script>
+
+</body>
+</html>

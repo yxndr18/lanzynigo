@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LETTERS — yzo’s corner</title>
+<style>
+@font-face { font-family: 'Garet'; src: url('../fonts/Garet.ttf') format('truetype'); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Garet', serif;
+  background: #ffffff;
+  text-align: center;
+}
+
+header { margin-top: 40px; }
+h1 { color: #5f7d7d; margin-bottom: 10px; }
+
+nav { display: flex; justify-content: center; gap: 20px; font-size: 13px; }
+nav a { text-decoration: none; color: #000; padding: 4px 10px; border-radius: 14px; }
+nav a.active { background: #f3c6e8; }
+
+/* CONTENT GRID */
+.content {
+  margin: 50px auto 0 auto;
+  max-width: 900px; /* para hindi super lapad sa malalaking screen */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 per row */
+  gap: 15px; /* tamang spacing sa pagitan */
+  justify-items: center;
+}
+
+.letter-card {
+  width: 160px; /* adjust para pasok 4 per row */
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  background: #fefefe;
+  transition: transform 0.2s;
+}
+
+.letter-card:hover { transform: scale(1.05); }
+
+.letter-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.letter-card button {
+  margin-top: 8px;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Garet', serif;
+}
+
+/* IMAGE MODAL */
+#imageModal {
+  display: none;
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+#imageModal img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+}
+
+#imageModal span {
+  position: absolute;
+  top: 20px; right: 40px;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>yzo’s corner</h1>
+<nav>
+  <a href="home.html">HOME</a>
+  <a href="letters.html" class="active">LETTERS</a>
+  <a href="playlist.html">PLAYLIST</a>
+  <a href="eli.html">ELI</a>
+  <a href="/quiz/quiz.html">QUIZ</a>
+  <a href="../funfacts.html">FUN FACTS</a>
+  <a href="notes.html">NOTES</a>
+  <a href="yzochives.html">YZOCHIVES</a>
+</nav>
+</header>
+
+<div class="content">
+  <!-- Loop through letters 1 to 22 -->
+  <!-- You can manually add these or generate dynamically via JS if needed -->
+  <div class="letter-card"><img src="letter/letter1.png" alt="letter preview"><button onclick="openImage('letter/letter1.png')">💌</button></div>
+  <div class="letter-card"><img src="letter/letter2.png" alt="letter preview"><button onclick="openImage('letter/letter2.png')">💌</button></div>
+  <div class="letter-card"><img src="letter/letter3.png" alt="letter preview"><button onclick="openImage('letter/letter3.png')">💌</button></div>
+  <div class="letter-card"><img src="letter/letter4.png" alt="letter preview"><button onclick="openImage('letter/letter4.png')">💌</button></div>
+  
+  <div class="letter-card"><img src="letter/letter5.png" alt="letter preview"><button onclick="openImage('letter/letter5.png')">💜</button></div>
+  <div class="letter-card"><img src="letter/letter6.png" alt="letter preview"><button onclick="openImage('letter/letter6.png')">💜</button></div>
+  <div class="letter-card"><img src="letter/letter7.png" alt="letter preview"><button onclick="openImage('letter/letter7.png')">💜</button></div>
+  <div class="letter-card"><img src="letter/letter8.png" alt="letter preview"><button onclick="openImage('letter/letter8.png')">💜</button></div>
+  
+  <div class="letter-card"><img src="letter/letter9.png" alt="letter preview"><button onclick="openImage('letter/letter9.png')">🧮</button></div>
+  <div class="letter-card"><img src="letter/letter10.png" alt="letter preview"><button onclick="openImage('letter/letter10.png')">🧮</button></div>
+  <div class="letter-card"><img src="letter/letter11.png" alt="letter preview"><button onclick="openImage('letter/letter11.png')">🧮</button></div>
+  <div class="letter-card"><img src="letter/letter12.png" alt="letter preview"><button onclick="openImage('letter/letter12.png')">🧮</button></div>
+  
+  <div class="letter-card"><img src="letter/letter13.png" alt="letter preview"><button onclick="openImage('letter/letter13.png')">🥐</button></div>
+  <div class="letter-card"><img src="letter/letter14.png" alt="letter preview"><button onclick="openImage('letter/letter14.png')">🥐</button></div>
+  <div class="letter-card"><img src="letter/letter15.png" alt="letter preview"><button onclick="openImage('letter/letter15.png')">🥐</button></div>
+  <div class="letter-card"><img src="letter/letter16.png" alt="letter preview"><button onclick="openImage('letter/letter16.png')">🥐</button></div>
+  
+  <div class="letter-card"><img src="letter/letter17.png" alt="letter preview"><button onclick="openImage('letter/letter17.png')">🧬</button></div>
+  <div class="letter-card"><img src="letter/letter18.png" alt="letter preview"><button onclick="openImage('letter/letter18.png')">🧬</button></div>
+  <div class="letter-card"><img src="letter/letter19.png" alt="letter preview"><button onclick="openImage('letter/letter19.png')">🧬</button></div>
+  <div class="letter-card"><img src="letter/letter20.png" alt="letter preview"><button onclick="openImage('letter/letter20.png')">🧬</button></div>
+  
+  <div class="letter-card"><img src="letter/letter21.png" alt="letter preview"><button onclick="openImage('letter/letter21.png')">💐</button></div>
+  <div class="letter-card"><img src="letter/letter22.png" alt="letter preview"><button onclick="openImage('letter/letter22.png')">💐</button></div>
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" onclick="closeImage()">
+  <span>&times;</span>
+  <img id="imageFrame">
+</div>
+
+<script>
+function openImage(file) {
+  document.getElementById('imageFrame').src = file;
+  document.getElementById('imageModal').style.display = 'flex';
+}
+
+function closeImage() {
+  document.getElementById('imageModal').style.display = 'none';
+  document.getElementById('imageFrame').src = '';
+}
+</script>
+
+</body>
+</html>
